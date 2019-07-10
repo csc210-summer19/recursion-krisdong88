@@ -71,28 +71,28 @@ public class ObstacleCourse {
    * col where the exit was found
    */
   private boolean findExit(int row, int col) {
-	  boolean escaped = false;
+	  boolean found = false;
 		if (course[row][col] == ' ') {
 			course[row][col] = '.';
 			if (row == 0 || row == course.length - 1 || col == 0
 					|| col == course[0].length - 1) {
 				foundRow = row;
 				foundCol = col;
-				escaped = true;
+				found = true;
 			} else {
-				escaped = findExit(row + 1, col);
-				if (escaped == false) {
-					escaped = findExit(row, col + 1);
-				}if (escaped == false) {
-					escaped = findExit(row - 1, col);
-				}if (escaped == false) {
-					escaped = findExit(row, col - 1);
-				}if (escaped == true) {
+				found = findExit(row + 1, col);
+				if (found == false) {
+					found = findExit(row, col + 1);
+				}if (found == false) {
+					found = findExit(row - 1, col);
+				}if (found == false) {
+					found = findExit(row, col - 1);
+				}if (found == true) {
 					course[row][col] = 'O';
 				}
 			}
 		}
-		return escaped;
+		return found;
 	}
 
 }
